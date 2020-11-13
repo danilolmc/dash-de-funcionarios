@@ -15,7 +15,7 @@ namespace desafio_mvc.Controllers
     {
         private readonly ApplicationDbContext database;
 
-         private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<IdentityUser> _userManager;
 
 
         public VagaController(ApplicationDbContext database, UserManager<IdentityUser> userManager)
@@ -25,7 +25,7 @@ namespace desafio_mvc.Controllers
         }
 
         [Route("wa/vagas")]
-        
+
         [Authorize]
         public IActionResult Vagas()
         {
@@ -37,7 +37,7 @@ namespace desafio_mvc.Controllers
 
         [Route("wa/vagas/cadastrar")]
 
-        [Authorize(Policy= "AccessAdmin")]
+        [Authorize(Policy = "AccessAdmin")]
         public IActionResult Cadastrar()
         {
 
@@ -48,7 +48,7 @@ namespace desafio_mvc.Controllers
 
         [HttpPost]
 
-        [Authorize(Policy= "AccessAdmin")]
+        [Authorize(Policy = "AccessAdmin")]
         public IActionResult SalvarVaga(VagaDTO modeloDeDadosVaga)
         {
             if (ModelState.IsValid)
@@ -100,7 +100,7 @@ namespace desafio_mvc.Controllers
 
         }
 
-        [Authorize(Policy= "AccessAdmin")]
+        [Authorize(Policy = "AccessAdmin")]
         public IActionResult DeletarVaga(int id)
         {
 
@@ -117,7 +117,7 @@ namespace desafio_mvc.Controllers
 
         [Route("wa/vagas/editar/{Id}")]
 
-        [Authorize(Policy= "AccessAdmin")]
+        [Authorize(Policy = "AccessAdmin")]
         public IActionResult Editar(int id)
         {
 
@@ -140,7 +140,7 @@ namespace desafio_mvc.Controllers
 
         [HttpPost]
 
-        [Authorize(Policy= "AccessAdmin")]
+        [Authorize(Policy = "AccessAdmin")]
         public IActionResult SalvarAlteracoes(VagaDTO vagatemporaria)
         {
 
@@ -154,24 +154,25 @@ namespace desafio_mvc.Controllers
                 vagaEditar.Projeto = vagatemporaria.Projeto;
                 vagaEditar.Qtd_vaga = vagatemporaria.Qtd_vaga;
                 vagaEditar.Qtd_vaga = vagatemporaria.Qtd_vaga;
-                
+
                 var vagaAlocacao = database.Alocacoes.Where(v => v.Vaga.Id == vagatemporaria.Id).Include(f => f.Funcionario).ToList();
 
                 Funcionario funcionarioAlocacao = new Funcionario();
 
-                if(vagaAlocacao.Count > 0){
+                if (vagaAlocacao.Count > 0)
+                {
 
                     funcionarioAlocacao = vagaAlocacao[0].Funcionario;
-                    
-                    database.Alocacoes.RemoveRange(vagaAlocacao);        
 
-                    database.Funcionarios.Remove(funcionarioAlocacao);        
+                    database.Alocacoes.RemoveRange(vagaAlocacao);
+
+                    database.Funcionarios.Remove(funcionarioAlocacao);
                 }
 
                 database.Vagas.Remove(vagaEditar);
 
                 database.SaveChanges();
-                
+
                 foreach (var vt in vagatemporaria.Listatecnologias)
                 {
                     var tecnologias = database.Tecnologias.First(t => t.Id == vt);
@@ -189,10 +190,11 @@ namespace desafio_mvc.Controllers
 
                 }
 
-                if(vagaAlocacao.Count > 0){
+                if (vagaAlocacao.Count > 0)
+                {
 
                     database.Vagas.Add(vagaEditar);
-                
+
                     database.Funcionarios.Add(funcionarioAlocacao);
 
                     database.Alocacoes.AddRange(vagaAlocacao);

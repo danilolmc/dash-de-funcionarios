@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace desafio_mvc.Controllers
 {
-    [Authorize(Policy= "AccessAdmin")]
+    [Authorize(Policy = "AccessAdmin")]
     public class AlocacaoController : Controller
     {
 
@@ -63,14 +63,16 @@ namespace desafio_mvc.Controllers
                 alocacao.DataAlocacao = dataAlocacao;
 
                 database.Alocacoes.Add(alocacao);
-                
+
                 vaga.Qtd_vaga -= 1;
                 funcionario.isAlocado = true;
 
                 database.SaveChanges();
 
                 return RedirectToAction("Funcionario", "Funcionario");
-            }else{
+            }
+            else
+            {
 
                 return Content("Dados invalidos");
             }

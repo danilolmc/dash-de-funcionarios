@@ -86,7 +86,7 @@ namespace desafio_mvc.Controllers
 
                 Vaga vagaA = new Vaga();
 
-         
+
 
                 vagaA.Codigo_vaga = "#52584050";
                 vagaA.Projeto = "Banco original";
@@ -202,7 +202,9 @@ namespace desafio_mvc.Controllers
                 database.SaveChanges();
 
                 return Json("1");
-            }else{
+            }
+            else
+            {
 
                 return Json("0");
             }

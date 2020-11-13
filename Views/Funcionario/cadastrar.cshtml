@@ -26,44 +26,54 @@
 </header>
 
 <div class="form-container">
-    <form asp-controller="Funcionario" asp-action="SalvarFuncionario" method="POST">
+    <form asp-controller="Funcionario" asp-action="SalvarFuncionario" method="POST" id="bigForm">
+
+        <div>
 
 
-        <label asp-for="Nome">Nome</label>
-        <input type="text" asp-for="Nome">
-        <span asp-validation-for="Nome"></span>
+            <label asp-for="Nome">Nome</label>
+            <input type="text" asp-for="Nome">
+            <span asp-validation-for="Nome"></span>
 
-        <label asp-for="Cargo">Cargo</label>
-        <input type="text" asp-for="Cargo">
-        <span asp-validation-for="Cargo"></span>
+            <label asp-for="Cargo">Cargo</label>
+            <input type="text" asp-for="Cargo">
+            <span asp-validation-for="Cargo"></span>
 
-        <label asp-for="Inicio_wa">Data de início de WA</label>
-        <input type="date" asp-for="Inicio_wa" id="dataInicio">
-        <span asp-validation-for="Inicio_wa"></span>
+            <label asp-for="Inicio_wa">Data de início de WA</label>
+            <input type="date" asp-for="Inicio_wa" id="dataInicio">
+            <span asp-validation-for="Inicio_wa"></span>
 
-        <label asp-for="Matricula">Matrícula</label>
-        <input type="text" asp-for="Matricula">
-        <span asp-validation-for="Matricula"></span>
+            <label asp-for="Matricula">Matrícula</label>
+            <input type="text" asp-for="Matricula">
+            <span asp-validation-for="Matricula"></span>
 
-        <label asp-for="Termino_wa">Previsão de término de WA</label>
-        <input type="date" asp-for="Termino_wa" id="dataTermino">
-        <span asp-validation-for="Termino_wa"></span>
+        </div>
+        <div>
 
-        <label asp-for="Listatecnologias">Tecnologias</label>
-        <select name="Listatecnologias[]" multiple="" class="ui fluid dropdown" id="dropTech" asp-for="Listatecnologias"
-            asp-items="@tecnologias">
-            <option value="">Selecionar</option>
-        </select><br>
-        <a asp-controller="Tecnologia" asp-action="Cadastrar" class="btnAddTech">Não achei minha tecnologia</a>
+            <label asp-for="Termino_wa">Previsão de término de WA</label>
+            <input type="date" asp-for="Termino_wa" id="dataTermino">
+            <span asp-validation-for="Termino_wa"></span>
 
+            <label asp-for="Listatecnologias">Tecnologias</label>
+            <select name="Listatecnologias[]" multiple="" class="ui fluid dropdown" id="dropTech"
+                asp-for="Listatecnologias" asp-items="@tecnologias">
+                <option value="">Selecionar</option>
+            </select>
+            <br>
+            <a asp-controller="Tecnologia" asp-action="Cadastrar" class="btnAddTech">Não achei a tecnologia</a>
+            <br>
+            <br>
+            <br>
+            <br>
 
-        <input type="hidden" name="Id" asp-for="Vaga_Id" value="0">
+            <input type="hidden" name="Id" asp-for="Vaga_Id" value="0">
 
-        <label asp-for="Gft_Id">Unidades</label>
-        <select class="ui dropdown" id="drop" asp-for="Gft_Id" asp-items="@unidadesGft"></select>
+            <label asp-for="Gft_Id">Unidades</label>
+            <select class="ui dropdown" id="drop" asp-for="Gft_Id" asp-items="@unidadesGft"></select>
 
+            <button type="submit">Cadastrar</button>
+            <br/><br/>
 
-        <button type="submit">Cadastrar</button>
-
+        </div>
     </form>
 </div>

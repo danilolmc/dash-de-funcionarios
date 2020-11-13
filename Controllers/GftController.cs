@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace desafio_mvc.Controllers
 {
-    [Authorize(Policy= "AccessAdmin")]
+    [Authorize(Policy = "AccessAdmin")]
     public class GftController : Controller
 
     {

@@ -31,7 +31,7 @@ namespace desafio_mvc.Data
 
             builder.Entity<Funcionario_Tecnologia>()
                .HasKey(fc => new { fc.Id });
-        
+
             builder.Entity<Funcionario_Tecnologia>()
                 .HasOne(fc => fc.Funcionario)
                 .WithMany(fc => fc.FuncionarioTecnologias)
@@ -43,21 +43,17 @@ namespace desafio_mvc.Data
                 .HasForeignKey(fc => fc.Tecnologia_Id);
 
             builder.Entity<Vaga_tecnologia>()
-               .HasKey(vt => new { vt.Id});
-        
+               .HasKey(vt => new { vt.Id });
+
             builder.Entity<Vaga_tecnologia>()
                 .HasOne(vt => vt.Vaga)
                 .WithMany(vt => vt.VagaTecnologias)
                 .HasForeignKey(vt => vt.Vaga_Id);
-        
+
             builder.Entity<Vaga_tecnologia>()
                 .HasOne(vt => vt.Tecnologia)
                 .WithMany(vt => vt.VagaTecnologias)
-                .HasForeignKey(vt => vt.Tecnologia_Id);  
-        
-            // builder.Entity<Gft>()
-            //     .HasMany(gft => gft.Funcionarios)
-            //     .WithOne(gft => gft.Gft);
+                .HasForeignKey(vt => vt.Tecnologia_Id);
         }
     }
 }

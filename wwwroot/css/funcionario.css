@@ -21,7 +21,7 @@ form .multiple{
 
 form div.dropdown{
     width: 100% !important;
-    padding: 10px !important;
+    padding: 10px 10px 5px 10px !important;
     min-height: 50px !important;
 }
 
@@ -58,4 +58,12 @@ form div.text{
 
 #btnAlocar{
     cursor: pointer;
+}
+
+#bigForm{
+    display: flex;
+    min-width: 1000px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    column-gap: 10px;
 }

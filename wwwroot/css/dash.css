@@ -1,5 +1,4 @@
 body{
-    /* background: #aaa; */
     display: grid;
     grid-template-columns: 17% 83%;
     overflow: hidden;
@@ -38,11 +37,10 @@ th,td{
 
 .form-container form{
     min-width: 450px;
-    max-width: 450px;
+    border: 1px solid #213e7f;
     padding: 10%;
     border-radius: 5px;
-    border: 1px solid #eee;
-    box-shadow: 0 5px 20px rgba(209, 209, 209, 0.486);
+    box-shadow: 0 5px 20px #213f7f46;
 }
 .form-container form label{
     display: block; 
@@ -57,6 +55,7 @@ th,td{
     border: 1px solid rgba(34,36,38,.15);
     color: #777;
     margin-bottom:5px;
+    min-width: 358px !important;
 }
 
 

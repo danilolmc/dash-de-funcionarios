@@ -32,11 +32,11 @@ namespace desafio_mvc.Controllers
             var funcionario = database.Funcionarios.Where(func => func.isActive && !func.isAlocado).Include(f => f.FuncionarioTecnologias).ThenInclude(t => t.Tecnologia);
 
             var user = await _userManager.GetUserAsync(User);
-            
+
             return View(funcionario.ToList());
         }
-        
-        [Authorize(Policy= "AccessAdmin")]
+
+        [Authorize(Policy = "AccessAdmin")]
 
         [Route("wa/funcionarios/cadastrar")]
         public IActionResult Cadastrar()
@@ -50,7 +50,7 @@ namespace desafio_mvc.Controllers
 
         [HttpPost]
 
-        [Authorize(Policy= "AccessAdmin")]
+        [Authorize(Policy = "AccessAdmin")]
         public IActionResult SalvarFuncionario(FuncionarioDTO modeloDeDadosFunc)
         {
             if (ModelState.IsValid)
@@ -102,8 +102,8 @@ namespace desafio_mvc.Controllers
             }
 
         }
-        
-        [Authorize(Policy= "AccessAdmin")]
+
+        [Authorize(Policy = "AccessAdmin")]
 
         public IActionResult DeletarFuncionario(int idf)
         {
@@ -130,7 +130,7 @@ namespace desafio_mvc.Controllers
 
         [Route("wa/funcionario/editar/{Id}")]
 
-        [Authorize(Policy= "AccessAdmin")]
+        [Authorize(Policy = "AccessAdmin")]
 
         public IActionResult Editar(int id)
         {
@@ -162,8 +162,8 @@ namespace desafio_mvc.Controllers
 
 
         [HttpPost]
-        
-        [Authorize(Policy= "AccessAdmin")]
+
+        [Authorize(Policy = "AccessAdmin")]
         public IActionResult SalvarAlteracoesFunc(FuncionarioDTO funcionarioTemporario)
         {
 

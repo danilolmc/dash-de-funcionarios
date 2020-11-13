@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace desafio_mvc.Controllers
 {
-    [Authorize(Policy= "AccessAdmin")]
+    [Authorize(Policy = "AccessAdmin")]
     public class HistoricoController : Controller
     {
         private readonly ApplicationDbContext database;
@@ -20,10 +20,11 @@ namespace desafio_mvc.Controllers
             this.database = database;
         }
 
-        
+
         [Route("wa/historico")]
-        public IActionResult Historico(){
-            
+        public IActionResult Historico()
+        {
+
             var alocacao = database.Alocacoes.Where(f => f.Id > 0).Include(alf => alf.Funcionario).Include(alv => alv.Vaga);
 
             ViewBag.Historico = alocacao;

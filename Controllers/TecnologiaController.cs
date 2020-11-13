@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace desafio_mvc.Controllers
 {
-    [Authorize(Policy= "AccessAdmin")]
+    [Authorize(Policy = "AccessAdmin")]
     public class TecnologiaController : Controller
     {
         private readonly ApplicationDbContext database;
@@ -90,8 +90,10 @@ namespace desafio_mvc.Controllers
                 database.SaveChanges();
 
                 return Content("1");
-            
-            }else{
+
+            }
+            else
+            {
 
                 return Content("0");
             }
