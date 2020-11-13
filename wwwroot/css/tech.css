@@ -1,0 +1,60 @@
+#sideMenu nav a{
+    background: transparent !important;
+    border-left: 2px solid transparent !important;
+}
+
+#sideMenu nav a:hover{
+    background: #375cad9d !important;
+    border-left: 2px solid #fff !important;
+}
+
+#sideMenu nav a:nth-child(4){
+    background: #375cad9d !important;
+    border-left: 2px solid #fff !important;
+}
+
+#modal{
+    width:100% !important;
+    height: 80vh !important;
+    display: grid !important;
+    place-content: center !important;
+}
+
+#modal form{
+    box-shadow: 0 5px 10px #eee;
+    border: 1px solid #375cad9d;
+    padding: 30px 20px;
+    min-width: 350px;
+    background: #fff;
+}
+
+
+
+#modal form div label, #modal input, #modal button{
+    margin-bottom: 10px;
+    width: 100%;
+    border: 0;
+    outline: 0;
+}
+
+#modal form div label{
+    display: block;
+    color: #aaa;
+    margin-bottom: 10px;
+}
+
+#modal form div input, #modal button{
+    height: 5vh !important;
+}
+
+#modal form input{
+
+    border: 1px solid #ddd;
+    color: #aaa;
+    padding: 0 20px;
+}
+
+#modal form button{
+    background: #375cad !important;
+    color: #fff;
+}

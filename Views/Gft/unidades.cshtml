@@ -1,0 +1,63 @@
+@model IEnumerable<desafio_mvc.Models.Gft>
+
+@{
+    Layout = "_LeftMenu";
+}
+
+<link rel="stylesheet" href="~/css/gft.css" />
+<link rel="stylesheet" href="~/css/vagas.css" />
+<link rel="stylesheet" href="~/css/sideMenu.css" />
+
+<script>
+    $(document).ready(function () {
+        $('#tabela_vagas_gft').DataTable();
+        $('.dataTables_empty').text("Nenhuma unidade GFT cadastrada");
+
+    });
+</script>
+
+<header>
+    <h2>Unidades GFT</h2>
+    <h3>Gerencie as unidades da GFT</h3>
+</header>
+
+
+<section class="datatable-container">
+
+
+    <table id="tabela_vagas_gft" class="ui very basic table">
+        <thead>
+            <tr>
+                <th>CEP</th>
+                <th>Cidade</th>
+                <th>Endereço</th>
+                <th>Estado</th>
+                <th>Nome da unidade</th>
+                <th>Telefone</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var unidade in Model)
+            {
+                <tr class="row">
+                    <td>@unidade.Cep</td>
+                    <td>@unidade.Cidade</td>
+                    <td>@unidade.Endereco</td>
+                    <td>@unidade.Estado</td>
+                    <td>@unidade.Nome</td>
+                    <td>@unidade.Telefone</td>
+                    <td class="editDelete">
+                        <form>
+                            <a href="/wa/unidadesgft/editar/@unidade.Id" id="pencil">
+                                <i class="fas fa-pencil-alt"></i>
+                            </a>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <a asp-controller="Gft" asp-action="Cadastrar">Adicionar unidade</a>
+</section>

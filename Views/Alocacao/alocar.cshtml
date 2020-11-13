@@ -1,0 +1,79 @@
+@model desafio_mvc.DTO.AlocacaoDTO;
+
+@{
+    Layout = "_LeftMenu";
+
+    Funcionario funcionario = ViewData["Funcionario"] as Funcionario;
+    IEnumerable<Vaga> vagas = ViewData["Vagas"] as IEnumerable<Vaga>;
+}
+
+<link rel="stylesheet" href="~/css/vagas.css" />
+<link rel="stylesheet" href="~/css/funcionario.css" />
+<link rel="stylesheet" href="~/css/alocacao.css" />
+
+<script src="~/js/alocacao.js"></script>
+<script src="~/js/customDay.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#tabela_vagas_alocar').DataTable();
+
+    });
+</script>
+
+
+<section>
+    <header>
+
+        <h2>Alocar funcionário em WA</h2>
+        <h3>Selecione uma vaga na lista para alocar o funcionário @funcionario.Nome</h3>
+    </header>
+    <section class="datatable-container">
+
+
+        <table id="tabela_vagas_alocar" class="ui very basic table">
+            <thead>
+                <th>Projeto</th>
+                <th>Descrição da vaga</th>
+                <th>Tecnologias</th>
+                <th>Abertura da vaga</th>
+                <th>Qtd. Vagas</th>
+                <th>Código da vaga</th>
+                <th></th>
+            </thead>
+            <tbody id="tbodyVagasAl">
+
+                @foreach (var vaga in vagas)
+                {
+                    <tr class="vaga row" >
+                        <td>@vaga.Projeto</td>
+                        <td>@vaga.Descricao_vaga</td>
+                        <td>
+
+                            @foreach (var tec in vaga.VagaTecnologias.Select(e => e.Tecnologia))
+                            {
+                                <span class="funcTech">@tec.Nome</span>
+                            }
+                        </td>
+                        <td class="data">@vaga.Abertura_vaga</td>
+                        <td>@vaga.Qtd_vaga</td>
+                        <td>@vaga.Codigo_vaga</td>
+                        <td class="editDelete">
+                            <button class="btnSelecionar" value="@vaga.Id">Selecionar</button>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+
+        <footer>
+            <form asp-controller="Alocacao" asp-action="AlocarFuncionario" method="post" id="formAlocacao">
+                <input type="hidden" value="0" id="txtidVaga" asp-for="Vaga_Id">
+                <input type="hidden" value="@funcionario.Id" id="txtidFuncionario" asp-for="Funcionario_Id">
+                <button type="submit">Alocar</button>
+            </form>
+        </footer>
+
+    </section>
+</section>

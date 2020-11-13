@@ -1,0 +1,93 @@
+@model IEnumerable<desafio_mvc.Models.Vaga>
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@{
+    Layout = "_LeftMenu";
+    @* var usuarioLogadoLevel = new SelectList(ViewBag.UsuarioLogadoLevel, "levelAccess"); *@
+}
+
+
+<link rel="stylesheet" href="~/css/vagas.css" />
+
+<script src="~/js/customDay.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#tabela_vagas').DataTable();
+        $('.dataTables_empty').text("Nenhuma vaga cadastrada no sistema");
+
+    });
+</script>
+
+<header>
+
+    <h2>Vagas em aberto</h2>
+    <h3>Gerencie as vagas em aberto</h3>
+
+</header>
+
+<section class="datatable-container">
+
+    </header>
+
+    <table id="tabela_vagas" class="ui very basic table">
+        <thead>
+            <tr>
+                <th>Projeto</th>
+                <th>Descrição da vaga</th>
+                <th>Tecnologias</th>
+                <th>Abertura da vaga</th>
+                <th>Qtd. Vagas</th>
+                <th>Código da vaga</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var vaga in Model)
+            {
+                <tr class="row">
+                    <td>@vaga.Projeto</td>
+                    <td>@vaga.Descricao_vaga</td>
+                    <td class="techs">
+
+                        @foreach (var tec in vaga.VagaTecnologias.Select(e => e.Tecnologia))
+                        {
+                            if (vaga.VagaTecnologias.Select(e => e.Tecnologia).Count() > 1)
+                            {
+
+                                <span>@tec.Nome</span>
+                            }
+                            else
+                            {
+
+                                <span>@tec.Nome</span>
+                            }
+                        }
+                    </td>
+                    <td class="data">@vaga.Abertura_vaga</td>
+                    <td>@vaga.Qtd_vaga</td>
+                    <td>@vaga.Codigo_vaga</td>
+                
+                    <td class="editDelete">
+                        @* <input type="hidden" name="" value="@usuarioLogadoLevel"> *@
+                    @if (User.FindFirst("levelAccess").Value == "admin"){
+                        <form asp-controller="Vaga" asp-action="DeletarVaga">
+                        <a href="/wa/vagas/editar/@vaga.Id" id="pencil"> 
+                            <i class="fas fa-pencil-alt"></i>
+                        </a>
+                            <input type="hidden" name="id" id="id" value="@vaga.Id">
+                            <button type="submit" class="trash">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                        </form>
+                     }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <a asp-controller="Vaga" asp-action="Cadastrar">Adicionar vaga</a>
+</section>

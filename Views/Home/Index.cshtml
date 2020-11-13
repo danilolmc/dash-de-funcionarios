@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    var faseTeste = true;
+}
+
+
+
+
+<link rel="stylesheet" href="~/css/home.css">
+
+<script defer src="~/js/popular.js"></script>
+
+<header>
+    <img src="~/assets/gftlogo.png">
+</header>
+<div class="text-center">
+    <h1>Gerenciador de funcionarios em WA</h1>
+    <span>
+    
+        @{
+           if(faseTeste) {
+               <a id="btnPopular">Popular base</a>
+            }
+        }
+        <a asp-area="Identity" asp-page="/Account/Register" >Cadastrar</a>
+        <a asp-area="Identity" asp-page="/Account/Login">Entrar</a>
+    </span>
+</div>
+
+
+<script>
+    document.getElementById("btnPopular").addEventListener("click", () => {
+
+         @faseTeste = false;
+    })
+</script>

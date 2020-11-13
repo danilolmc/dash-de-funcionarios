@@ -1,0 +1,89 @@
+body{
+    /* background: #aaa; */
+    display: grid;
+    grid-template-columns: 17% 83%;
+    overflow: hidden;
+}
+
+
+
+table .row{
+    transition: .5s ease-in-out;
+}
+
+table tbody .row:hover{
+    background: #3b67c71f;
+}
+  
+
+h2{
+    color: #213e7f;
+    font-size: 35px !important;
+}
+
+h3{
+    color: #aaa;
+    font-size: 18px !important;
+}
+
+th,td{
+    font-size: 15px !important;
+}
+
+.form-container{
+    display: grid;
+    place-content: center;
+    height: 85vh;
+}
+
+.form-container form{
+    min-width: 450px;
+    max-width: 450px;
+    padding: 10%;
+    border-radius: 5px;
+    border: 1px solid #eee;
+    box-shadow: 0 5px 20px rgba(209, 209, 209, 0.486);
+}
+.form-container form label{
+    display: block; 
+    margin: 1.2vh 0;
+    color: #888;
+}
+
+.form-container form input{
+    width: 100%;
+    padding: 0 1vw;
+    height: 5vh;
+    border: 1px solid rgba(34,36,38,.15);
+    color: #777;
+    margin-bottom:5px;
+}
+
+
+.form-container form input + span{
+    color: red;
+    font-size: 12px;
+}
+
+.form-container form button{
+    width: 100%;
+    padding: 0 1vw;
+    height: 5vh;
+    border: 1px solid #aaa;
+    color: #fff;
+    background: #213e7f;
+    border: 0;
+    cursor: pointer;
+    margin-top: 3vh;
+}
+
+
+
+input:focus{
+    width: 100%;
+    padding: 0 1vw;
+    height: 5vh;
+    border: 1px solid red;
+    color: #777;
+    margin-bottom:5px;
+}

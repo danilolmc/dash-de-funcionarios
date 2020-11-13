@@ -1,0 +1,15 @@
+﻿@page
+@model AccessDeniedModel
+@{
+    ViewData["Title"] = "403";
+}
+
+<link rel="stylesheet" href="~/css/acessoNegado.css">
+
+<header>
+    <h1 class="text-danger">@ViewData["Title"]</h1>
+    <h2>Oops! Acesso negado</h2>
+    <p class="text-danger">Desculpe, você não tem permissão para acessar esta página!</p>
+
+    <a asp-controller="Funcionario" asp-action="Funcionario">Voltar</a>
+</header>

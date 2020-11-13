@@ -1,0 +1,53 @@
+
+@{
+    IEnumerable<Alocacao> alocacaoHistory = ViewData["Historico"] as IEnumerable<Alocacao>;
+
+    Layout = "_LeftMenu";
+}
+
+<header>
+    <h2>Histórico de WA</h2>
+    <h3>Visualize o histórico de alocações</h3>
+</header>
+
+<link rel="stylesheet" href="~/css/vagas.css" />
+<link rel="stylesheet" href="~/css/historico.css" />
+
+<script src="~/js/customDay.js"></script>
+<script src="~/js/funcionarios.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#tabela_historico').DataTable();
+        $('.dataTables_empty').text("O histórico está vazio");
+    });
+</script>
+
+
+
+<section class="datatable-container">
+
+    <table id="tabela_historico" class="ui very basic table">
+        <thead>
+            <tr>
+                <th>Funcionário</th>
+                <th>Cliente</th>
+                <th>Código da vaga</th>
+                <th>Início WA</th>
+                <th>Início da Alocacão</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var alocacao in alocacaoHistory)
+            {
+                <tr class="row">
+                    <td>@alocacao.Funcionario.Nome</td>
+                    <td>@alocacao.Vaga.Projeto</td>
+                    <td>@alocacao.Vaga.Codigo_vaga</td>
+                    <td class="data">@alocacao.Funcionario.Inicio_wa</td>
+                    <td class="data">@alocacao.DataAlocacao</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</section>

@@ -1,0 +1,19 @@
+#sideMenu nav a{
+    background: transparent !important;
+    border-left: 2px solid transparent !important;
+}
+
+#sideMenu nav a:hover{
+    background: #375cad9d !important;
+    border-left: 2px solid #fff !important;
+}
+
+#sideMenu nav a:nth-child(5){
+    background: #375cad9d !important;
+    border-left: 2px solid #fff !important;
+}
+
+.row td{
+    width: calc(100% / 4.7);
+    padding: 20px 15px !important;
+}

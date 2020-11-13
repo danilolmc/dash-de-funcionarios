@@ -1,0 +1,89 @@
+@model IEnumerable<desafio_mvc.Models.Funcionario>
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@{
+    Layout = "_LeftMenu";
+}
+
+<header>
+    <h2>Funcionários em WA</h2>
+    <h3>Gerencie os funcionarios que estão em WA</h3>
+</header>
+
+<link rel="stylesheet" href="~/css/vagas.css" />
+<link rel="stylesheet" href="~/css/funcionario.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@master/devicon.min.css">
+
+<script src="~/js/customDay.js"></script>
+<script src="~/js/funcionarios.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#tabela_vagas').DataTable();
+        $('.dataTables_empty').text("Nenhum funcionário cadastrado no sistema");
+
+    });
+</script>
+
+
+
+<section class="datatable-container">
+
+
+    <table id="tabela_vagas" class="ui very basic table">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Cargo</th>
+                <th>Tecnologias</th>
+                <th>Início WA</th>
+                <th>Previsão término WA</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var funcionario in Model)
+            {
+                <tr class="row">
+                    <td>@funcionario.Nome</td>
+                    <td>@funcionario.Cargo</td>
+                    <td class="techs">
+
+                        @foreach (var tec in funcionario.FuncionarioTecnologias.Select(e => e.Tecnologia))
+                        {
+                            <span class="funcTech">@tec.Nome</span>
+                        }
+
+                    </td>
+                    <td class="data">@funcionario.Inicio_wa</td>
+                    <td class="data">@funcionario.Termino_wa</td>
+                    <td class="editDelete">
+                    @if (User.FindFirst("levelAccess").Value == "admin")
+                    {
+
+
+                            <form asp-controller="Funcionario" asp-action="DeletarFuncionario">
+
+                                <a href="/wa/alocar/@funcionario.Id" id="btnAlocar">
+                                    <i class="fas fa-user-plus"></i>
+                                </a>
+                                <a href="/wa/funcionario/editar/@funcionario.Id" id="pencil">
+                                    <i class="fas fa-pencil-alt"></i>
+                                </a>
+
+                                <input type="hidden" name="idf" id="idf" value="@funcionario.Id">
+                                <button type="submit" class="trash">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </form>
+                    }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <a asp-controller="Funcionario" asp-action="Cadastrar">Cadastrar funcionario</a>
+</section>

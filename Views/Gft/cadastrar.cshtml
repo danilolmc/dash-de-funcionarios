@@ -1,0 +1,77 @@
+@model desafio_mvc.DTO.GftDTO;
+
+@{
+    Layout = "_LeftMenu";
+}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.js"></script>
+
+@* <link rel="stylesheet" href="~/css/funcionario.css" /> *@
+
+<link rel="stylesheet" href="~/css/gft.css" />
+
+<script>
+
+    const searchCepData = (cep) => {
+
+    let Data = "";
+
+        $.getJSON(`https://viacep.com.br/ws/${cep}/json?callback=?`, function (json) {
+            Data = json.responseJSON;
+                $("#endereco").val(json.logradouro);
+                $("#cidade").val(json.localidade);
+                $("#estado").val(json.uf);
+            console.log(json)
+        });
+
+    }
+
+    $(document).ready(function () {
+
+        const cep = $("#cep");
+        cep.on("input", (e) => {
+            
+            if(e.target.value.length == 8){
+
+                dadosEndereco = searchCepData(e.target.value);
+            }
+        });
+    });
+</script>
+
+<header>
+    <h2>Unidades GFT</h2>
+    <h3>Cadastrar nova unidade</h3>
+</header>
+
+<div class="form-container">
+    <form asp-controller="Gft" asp-action="SalvarUnidade" method="POST">
+
+        <label asp-for="Cep">CEP</label>
+        <input type="text" asp-for="Cep" id="cep" placeholder="00000000" maxlength="8"/>
+        <span asp-validation-for="Cep"></span><br />
+
+        <label asp-for="Endereco">Endereço</label>
+        <input type="text" asp-for="Endereco" id="endereco" />
+        <span asp-validation-for="Endereco"></span><br />
+
+        <label asp-for="Cidade">Cidade</label>
+        <input type="text" asp-for="Cidade" id="cidade" />
+        <span asp-validation-for="Cidade"></span><br />
+
+        <label asp-for="Estado">Estado</label>
+        <input type="text" asp-for="Estado" id="estado" />
+        <span asp-validation-for="Estado"></span><br />
+
+        <label asp-for="Nome">Nome da unidade</label>
+        <input type="text" asp-for="Nome" />
+        <span asp-validation-for="Nome"></span><br />
+
+        <label asp-for="Telefone">Telefone</label>
+        <input type="tel" asp-for="Telefone" placeholder="00 00000000"/>
+        <span asp-validation-for="Telefone"></span><br />
+
+        <button type="submit">Cadastrar</button>
+
+    </form>
+</div>

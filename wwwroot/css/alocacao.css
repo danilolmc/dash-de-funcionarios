@@ -1,0 +1,26 @@
+.btnSelecionar{
+    width: 100%;
+    padding: 7px 0;
+    text-align: center;
+    color: #213e7f;
+}
+
+.datatable-container footer{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 15vh;
+}
+.datatable-container footer form{
+    display: none;
+}
+
+.datatable-container footer button{
+    background: #213e7f;
+    padding: 15px 30px;
+    color: #fff;
+    transition: .5s ease-in-out;
+}
+.datatable-container footer button:hover{
+    opacity: .89;
+}

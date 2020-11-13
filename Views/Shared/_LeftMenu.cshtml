@@ -1,0 +1,61 @@
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<link rel="stylesheet" href="~/css/site.css" />
+<link rel="stylesheet" href="~/css/dash.css" />
+<link rel="stylesheet" href="~/css/sideMenu.css" />
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.semanticui.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css">
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.22/js/dataTables.semanticui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.js"></script>
+
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+   
+
+<section id="sideMenu">
+    <header>
+        <a href="/wa"> <img src="~/assets/gftlogo.png"></a>
+    </header>
+    <nav>
+        <a asp-controller="Vaga" asp-action="Vagas">
+            <span class="fa fa-briefcase"></span>
+            <span>Vagas</span>
+        </a>
+        <a asp-controller="Funcionario" asp-action="Funcionario">
+            <span class="fas fa-user-alt"></span>
+            <span>Funcionários</span>
+        </a>
+        <a asp-controller="Gft" asp-action="Unidades">
+            <span class="fas fa-map-marker-alt"></span>
+            <span>Unidades GFT</span>
+        </a>
+        <a asp-controller="Tecnologia" asp-action="Tecnologias">
+            <span class="fab fa-js"></span>
+            <span>Tecnologias</span>
+        </a>
+        <a asp-controller="Historico" asp-action="Historico">
+            <span class="fas fa-history"></span>
+            <span>Histórico de WA</span>
+        </a>
+    </nav>
+
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <div class="nav-item logout">
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout"
+                asp-route-returnUrl="@Url.Action("Index", "wa", new { area = "" })">
+                <button type="submit" class="nav-link btn btn-link text-dark"><i class="fas fa-sign-out-alt"></i> <label>Sair</label></button>
+            </form>
+        </div>
+    }
+
+</section>
+
+<div class="layoutSidenav_content">
+    @RenderBody()
+</div>

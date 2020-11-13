@@ -1,0 +1,54 @@
+@model IEnumerable<desafio_mvc.Models.Tecnologia>;
+
+@{
+    Layout = "_LeftMenu";
+}
+
+<link rel="stylesheet" href="~/css/vagas.css" />
+<link rel="stylesheet" href="~/css/tech.css" />
+@* <link rel="stylesheet" href="~/css/sideMenu.css" /> *@
+
+<script>
+    $(document).ready(function () {
+        $('#tabela_tech').DataTable();
+        $('.dataTables_empty').text("Nenhuma Tecnologia cadastrada no sistema");
+
+    });
+</script>
+
+<header>
+    <h2>Tecnologias</h2>
+    <h3>Gerencie as tecnologias cadastradas</h3>
+</header>
+
+
+<section class="datatable-container">
+
+
+    <table id="tabela_tech" class="ui very basic table">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th> </th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var tecnologia in Model)
+            {
+                <tr class="row">
+                    <td>@tecnologia.Nome</td>
+                    <td class="editDelete">
+                        <form>
+                            <a href="/wa/tecnologia/editar/@tecnologia.Id" id="pencil">
+                                <i class="fas fa-pencil-alt"></i>
+                            </a>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <a asp-controller="Tecnologia" asp-action="Cadastrar" id="btnAddTech">Adicionar tecnologia</a>
+</section>

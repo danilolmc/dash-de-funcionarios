@@ -1,0 +1,35 @@
+@model desafio_mvc.DTO.TecnologiaDTO;
+
+@{
+    Layout = "_LeftMenu";
+}
+
+<link rel="stylesheet" href="~/css/vagas.css" />
+<link rel="stylesheet" href="~/css/sideMenu.css" />
+<link rel="stylesheet" href="~/css/tech.css" />
+
+<script src="~/js/tech.js"></script>
+
+
+<header>
+    <h2>Tecnologias</h2>
+    <h3>Editar tecnologia</h3>
+</header>
+
+
+<div id="modal">
+
+    <form id="formtechEdit">
+         
+        <div class="Techname">
+            <label asp-for="Nome">Informe o nome da tecnologia</label>
+            <input type="hidden" asp-for="Id">
+            <input  type="text" asp-for="Nome" required>
+            <span asp-validation-for="Nome"></span><br />
+        </div> 
+
+        <button id="btnTechSalvar" type="submit">Salvar</button>
+    </form>
+    <span id="error"></span>
+
+</div>

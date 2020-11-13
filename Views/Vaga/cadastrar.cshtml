@@ -1,0 +1,72 @@
+@model desafio_mvc.DTO.VagaDTO;
+
+@{
+    Layout = "_LeftMenu";
+    var tecnologias = new SelectList(ViewBag.Tecnologia, "Id", "Nome");
+}
+
+<link rel="stylesheet" href="~/css/vagas.css" />
+
+
+<script>
+    $(document).ready(function () {
+        $('#dropV').dropdown();
+        $('#dropTechV').dropdown();
+
+    });
+
+</script>
+
+
+<script>
+    $(document).ready(function () {
+
+        var codigoVaga = ("#" + new Date().getMinutes().toString() + new Date().getSeconds().toString() + new Date().getMilliseconds().toString() + (Math.round(Math.random() * 100)));
+
+        $('#vagaCode').val(codigoVaga);
+    });
+
+</script>
+
+
+<header>
+
+    <h2>Vagas</h2>
+    <h3>Cadastrar nova vaga</h3>
+
+</header>
+<div class="form-container">
+    <form asp-controller="Vaga" asp-action="SalvarVaga" method="POST">
+
+        <label asp-for="Codigo_vaga">Código da vaga</label>
+        <input id="vagaCode" type="text" asp-for="Codigo_vaga">
+        <span asp-validation-for="Codigo_vaga"></span>
+
+        <label asp-for="Descricao_vaga">Descrição</label>
+        <input type="text" asp-for="Descricao_vaga">
+        <span asp-validation-for="Descricao_vaga"></span>
+
+        <label asp-for="Projeto">Projeto</label>
+        <input type="text" asp-for="Projeto">
+        <span asp-validation-for="Projeto"></span>
+
+        <label asp-for="Qtd_vaga">Quantidade de vagas disponíveis</label>
+        <input type="text" asp-for="Qtd_vaga">
+        <span asp-validation-for="Qtd_vaga"></span>
+
+        <label asp-for="Listatecnologias">Tecnologias</label>
+        <select name="Listatecnologias[]" multiple="" class="ui fluid dropdown" id="dropTechV"
+            asp-for="Listatecnologias">
+            <option value="">Selecionar</option>
+            @foreach (var tecnologia in tecnologias)
+            {
+                <option value="@tecnologia.Value">@tecnologia.Text</option>
+            }
+            </select>
+            <span asp-validation-for="Listatecnologias"></span>
+            <a asp-controller="Tecnologia" asp-action="Cadastrar" class="btnAddTech">Não achei minha tecnologia</a>
+
+            <button type="submit">Cadastrar</button>
+
+        </form>
+    </div>

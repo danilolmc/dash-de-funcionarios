@@ -1,0 +1,155 @@
+*{
+    box-sizing: border-box;
+}
+
+#sideMenu{
+    background: #213E7F;
+    max-width: 20vw;
+    height: 100vh;
+    padding: 10% 0;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    /* justify-content: space-between; */
+}
+
+
+#sideMenu header{
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 10%;
+}
+
+#sideMenu img{
+    max-width:250px;
+}
+
+
+#sideMenu nav{
+    margin-top: 25vh;
+}
+#sideMenu nav a{
+    text-decoration: none;
+    height: 8vh;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    padding:0 1vw 0 2vw;
+    transition: .5s ease-in-out;
+    cursor: pointer;
+    font-size: 16px;
+    border-left: 2px solid transparent;
+}
+
+#sideMenu nav a:hover{
+    background: #375cad9d;
+    border-left: 2px solid #fff;
+}
+#sideMenu nav a span{
+    margin: 0 .5vw;
+}
+
+
+table{
+    margin-top: 50px !important;
+}
+
+table thead tr th{
+    color: #213E7F !important;
+}
+
+
+table thead tr th,
+table tbody tr td{
+    padding: 12px 15px !important;
+}
+
+.techs{
+    max-width: 300px !important;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    row-gap: 5px;
+    column-gap: 5px;
+}
+
+table tbody td span{
+
+    background: #213E7F;
+    color: #fff;
+    display: inline-flex;
+    padding: 5px 10px;
+    border-radius: 40px;
+}
+
+    table tbody td.editDelete{
+    display: grid;
+    justify-content: flex-end;
+}
+
+table tbody td form{
+    height: 100% !important;
+    display: flex;
+    align-items: center;
+}
+
+table tbody td form > *{
+    font-size: 17px;
+    margin: 0 0px 0 15px;
+}
+
+table tbody td form a,
+table tbody td form button#pencil{
+    color: #213E7F !important;
+}
+
+table tbody td form button.trash{
+    color: red;
+}
+/* 
+.fas .fa-trash-alt{
+    color: red !important;
+} */
+
+.field-validation-error{
+    color: red;
+    font-size: 12px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+#error{
+    display: none;
+    width: 100%;
+    text-align: center;
+}
+
+.logout{
+
+    text-decoration: none;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    padding:0 1vw 0 2vw;
+    transition: .5s ease-in-out;
+    font-size: 16px;
+    position: absolute;
+    bottom: 3vh;
+    border-left: 2px solid transparent;
+}
+
+.logout label, .logout i{
+    color: #fff;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.logout button{
+    
+    cursor: pointer;
+    transition: .5s ease;
+}
+
+.logout button:hover{
+    opacity: .8;   
+}

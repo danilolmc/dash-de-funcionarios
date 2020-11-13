@@ -1,0 +1,53 @@
+@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+}
+
+<link rel="stylesheet" href="~/css/login.css">
+<link rel="stylesheet" href="~/css/home.css">
+
+<header>
+
+        <nav>
+          <div>
+            <a asp-area="" asp-controller="Home" asp-action="Index">
+                <img src="~/assets/gftlogo.png">
+            </a>
+        </div>
+    </nav>
+</header>
+
+<div class="form">
+    <div >
+        <section>
+            <form id="account" method="post">
+                <h4>Entrar</h4>
+                <div>
+                    <label asp-for="Input.Email"></label>
+                    <input asp-for="Input.Email" />
+                    <span asp-validation-for="Input.Email"></span>
+                </div>
+                <div >
+                    <label asp-for="Input.Password"></label>
+                    <input asp-for="Input.Password" />
+                    <span asp-validation-for="Input.Password"></span>
+                </div>
+                <div >
+                    <button type="submit">Entrar</button>
+                </div>
+                <div class="last">
+                    <p>
+                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Ainda não tem uma conta? Cadastre-se!!</a>
+                    </p>
+                </div>
+            </form>
+        </section>
+    </div>
+ </div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,43 @@
+body{
+    display: grid;
+    place-content: center;
+}
+
+header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+h1{
+    font-size: 8rem;
+    color: #213e7f;
+}
+
+h2{
+    font-size: 3rem;
+    color: #213e7f;
+}
+
+p{
+    margin: 40px;
+    font-size: 1.5rem;
+    color: #aaa;
+}
+
+a{
+    margin-top: 40px;
+    padding: 1rem 4rem;
+    background: #213e7f;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration:none;
+    transition: .5s ease-in-out;
+}
+
+a:hover{
+    color: #fff;
+    opacity: .9;
+}

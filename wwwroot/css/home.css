@@ -1,0 +1,60 @@
+body{
+    display: grid;
+    overflow: hidden;
+}
+
+header{
+    width: 100%;
+    padding: 2.2vh 2vw;
+}
+
+header img{
+    max-width: 150px;
+}
+
+.text-center{
+    height: 77vh;
+    display: grid;
+    place-content: center;
+}
+
+.text-center h1{
+    color: #777;
+    font-size: 50px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: animaTitle 1s ease-in-out forwards;
+}
+
+@keyframes animaTitle{
+    
+    to{
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+}
+
+.text-center span{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+.text-center span a{
+    border: 1px solid;
+    padding: 1vh;
+    max-width: 150px;
+    width: 100%;
+    text-align: center;
+    margin: 0 1vw;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.text-center span a:last-child{
+    background: #213e7f;
+    margin: 0 1vw;
+    color: #fff;
+}

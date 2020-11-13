@@ -1,0 +1,114 @@
+body{
+    overflow: hidden;
+}
+
+.form{
+
+    height:80vh;
+    display: grid;
+    place-items: center; 
+    opacity: 0;
+    animation: animaform 1s ease-in-out forwards;
+}
+
+*{
+    outline: none;
+}
+
+@keyframes animaform{
+    to{
+      opacity: 1;
+    }
+  }
+  
+
+.form > div:first-of-type{
+
+    display: grid;
+    padding: 2rem;
+    background: #fff;
+    place-items: center; 
+    box-shadow: 0 10px 30px #eee;
+    border:1px solid #eee;
+}
+
+.form form{
+    width: 350px;
+}
+
+.form form h4{
+    font-size: 2.5rem;
+    color: #213E7F;
+    margin: 1rem 0 2rem 0;
+}
+
+.form form > *{
+    margin: .5rem 0;
+}
+
+.form form div > label{
+    display: block;
+    color: #213E7F;
+}
+
+.form form div > input,textarea{
+    background:#e9e9e9;
+    border-radius: 5px;
+    margin: .5rem 0;
+    padding:  1rem 1.5rem;
+    border: 1px solid transparent;
+    transition: .2s ease-in-out;
+}
+
+.form form div > input:focus,textarea:focus{
+    border: 1px solid #5581e2;
+}
+
+.form form div > input{
+    width: 100%;
+    height: 55px;
+    color: #777;
+}
+
+.form form  button{
+    margin: .8rem 0;
+    background: #213E7F;
+    font-size: 1rem;
+    border-radius: 5px;
+    width: 100%;
+    height: 55px;
+    color: #fff;
+    text-align: center;
+    transition: .5s ease-in-out;   
+}
+
+.form form  button:hover{
+    background: #3259ac;
+}
+
+.form form > div > span{
+    font-size: .7rem;
+    color: #ef5454;
+    width: 100%;
+    margin: 0rem 0 1rem 0;
+}
+
+.form form div.last{
+    color: #ef5454;
+}
+
+.form textarea{
+    resize: none;
+    width: 100%;
+    height: 15vh;
+    color: #fff;
+    padding: 15px;
+}
+
+.form form div.last a{
+    color: #878e9c;
+    font-size: .8rem;
+    text-decoration: underline;
+    cursor: pointer;
+    
+}

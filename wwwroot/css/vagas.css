@@ -1,0 +1,74 @@
+.datatable-container{
+
+    display: flex;
+    margin-top: 15vh;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 5vh;
+}
+
+#vagaCode{
+    pointer-events: none;
+}
+
+
+.datatable-container  > header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 7vh;
+    max-height: 10vh;
+}
+
+
+.datatable-container  > a{
+
+    color: #fff;
+    text-decoration: none;
+    padding:15px 10px;
+    border-radius: 5px;
+    margin-top: 5vh;
+    align-self: flex-end;
+    text-align: center;
+    background: #213e7f;
+    transition: .5s ease-in-out;
+}
+
+.datatable-container > a:hover{
+
+    opacity: .86;
+}
+
+#sideMenu nav a:nth-child(1){
+    background: #375cad9d;
+    border-left: 2px solid #fff;
+}
+
+form .multiple{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+form div.dropdown{
+    width: 100% !important;
+    padding: 10px !important;
+    min-height: 50px !important;
+    margin-bottom: 5px;
+}
+
+
+form .dropdown > .icon{
+    transform: translateY(7px) !important;
+} 
+
+form .dropdown > .label {
+    margin: 4px !important;
+} 
+
+
+
+form div.text{
+    
+    color: #888 !important;
+}
