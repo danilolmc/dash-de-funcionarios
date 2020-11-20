@@ -212,7 +212,6 @@ namespace desafio_mvc.Controllers
                 ViewBag.Tecnologia = database.Tecnologias.ToList();
                 ViewBag.Unidades = database.Gft.ToList();
 
-
                 return View("Editar");
             }
         }

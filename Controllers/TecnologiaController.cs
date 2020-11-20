@@ -15,7 +15,7 @@ namespace desafio_mvc.Controllers
     {
         private readonly ApplicationDbContext database;
 
-        public TecnologiaController(ApplicationDbContext database)
+        public TecnologiaController(ApplicationDbContext database) 
         {
             this.database = database;
         }
